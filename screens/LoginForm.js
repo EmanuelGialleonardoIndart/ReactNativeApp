@@ -1,20 +1,21 @@
 import React, { Component } from "react";
 import {login,login_attempt,login_fail} from "../actions/loginActions";
 import {connect} from "react-redux";
-import AsyncStorage from '@react-native-community/async-storage';
-import {
-  Text,
-  StyleSheet,
-  View,
-  TextInput,
-  ImageBackground,
-  Button,
-  TouchableHighlight,
-  Image,
-  Alert
-} from "react-native";
+import {Text,StyleSheet,View,TextInput,ImageBackground,TouchableHighlight,Image,} from "react-native";
 
 class LoginView extends Component {
+  static navigationOptions = {
+    title: 'Login',
+    headerStyle:{
+      backgroundColor:'blue',
+      borderBottomColor: "black",
+      borderBottomWidth:2
+    },
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      color:'white'
+    },
+  };
   state = {
     username: "",
     password: "",
@@ -47,7 +48,7 @@ class LoginView extends Component {
       username,
       password
     }
-    this.props.login(credentials);
+    this.props.login(credentials,this.props.navigation);
   };
 
   render() {
@@ -100,7 +101,7 @@ class LoginView extends Component {
         ) : null}
         {this.state.attempt?(
           <Image   
-          source={require('../Images/loading3.gif')}  
+          source={require('../Images/loading4.gif')}  
           style={{width: 100, height: 100 }}
           />
         ):null}

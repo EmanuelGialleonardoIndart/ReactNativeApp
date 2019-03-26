@@ -1,18 +1,33 @@
-import React,{Component} from 'react';
+import React from 'react';
 import { StyleSheet, View} from 'react-native';
-import LoginForm from './Components/LoginForm';
+import LoginForm from './screens/LoginForm';
 import storeConfigure from './Store';
+import MainScreen from './screens/MainScreen';
+import LoadingStart from './screens/LoadingStart';
+import { createStackNavigator, createAppContainer ,createSwitchNavigator} from "react-navigation";
 import {Provider} from 'react-redux';
 
+
+
+let loginStack=createStackNavigator({ loginScreen:LoginForm});
+let appStack=createStackNavigator({mainScreen:MainScreen});
+let Navigation=createAppContainer(createSwitchNavigator(
+  {
+   AuthLoadingScreen:LoadingStart,
+   App:appStack,
+   login:loginStack
+  },
+  {
+    initialRouteName: 'AuthLoadingScreen',
+  }
+  ));
+
 let store=storeConfigure();
-type Props={}
-class App extends Component<Props>{
+class App extends React.Component{
   render() {
     return (
-      <Provider store={store}>
-        <View style={styles.container}>
-          <LoginForm/>
-        </View>
+      <Provider store={store}>        
+          <Navigation/>        
       </Provider>
     );
   }
@@ -23,7 +38,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1F85DE',
   },
 });
 
