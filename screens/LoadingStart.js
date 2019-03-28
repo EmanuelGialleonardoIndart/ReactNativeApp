@@ -9,7 +9,7 @@ class LoadingStart extends Component {
     }
     obtenerToken = async () => {
         const userToken = await AsyncStorage.getItem('token');
-        this.props.navigation.navigate(userToken ? 'App' : 'login');
+        this.props.navigation.navigate(userToken ? 'mainScreen' : 'login');
       };
     render() {
         return (
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'blue'
+      backgroundColor: 'black'
     },
   });
 

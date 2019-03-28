@@ -1,3 +1,6 @@
 export const LOGIN_ATTEMPT="LOGIN_ATTEMPT";
-export const LOGIN_SUCCES="LOGIN_SUCCES";
+export const LOGIN_SUCCESS="LOGIN_SUCCES";
 export const LOGIN_FAIL="LOGIN_FAIL";
+export const FETCH_ATTEMPT="FETCH_ATTEMPT";
+export const FETCH_SUCCESS="FETCH_SUCCES";
+export const FETCH_FAIL="FETCH_FAIL";

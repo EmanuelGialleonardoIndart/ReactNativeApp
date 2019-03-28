@@ -1,6 +1,6 @@
 
 export const loginCall=(credentials)=>{
-   return fetch("http://192.168.0.6:8080/api/user/auth",{
+   return fetch("https://authenticationapireact.herokuapp.com/api/user/auth",{
        method:"POST",
        headers:{
            'Accept':'application/json',
@@ -15,4 +15,11 @@ export const loginCall=(credentials)=>{
         return Promise.all([Response, Response.json()])
     })
     
+}
+
+export const btf4UsersCall=(credentials)=>{
+    return fetch("https://api.bf4stats.com/api/onlinePlayers")
+    .then((response)=>{
+        return Promise.all([response,response.json()])
+    })
 }

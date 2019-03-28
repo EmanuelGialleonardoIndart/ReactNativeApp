@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import PlayersInfo from '../Components/PlayersInfo';
-import {View,Button} from 'react-native';
+import {View,Button,Text} from 'react-native';
 import NavigationDrawerStructure from '../Components/DrawerMenu';
 import AsyncStorage from '@react-native-community/async-storage';
 
-
-
-class MainScreen extends Component {
+class SecondScreen extends Component {
     static navigationOptions =({navigation})=> {
         return{
-        title:'Main screen',
+        title:'Second screen',
         headerStyle:{
             backgroundColor:'black',
             borderBottomColor: "#0D2454",
@@ -30,19 +27,18 @@ class MainScreen extends Component {
       }};
     componentDidMount(){
         this.props.navigation.setParams({ cerrarSesion: this.cerrarSesion });
-    }  
+    }   
     cerrarSesion=async()=>{
         await AsyncStorage.removeItem("token");
         this.props.navigation.navigate("login");
     }
     render() {
         return (
-            <View>
-                <PlayersInfo/>
+            <View style={{backgroundColor:'#38B1AE',width:'100%',height:'100%',justifyContent: 'center',alignItems: 'center'}}>
+                <Text style={{color:"white",fontSize:20}}>Welcome to second screen! :v</Text>
             </View>
         );
     }
 }
 
-
-export default MainScreen;
+export default SecondScreen;

@@ -7,7 +7,7 @@ class LoginView extends Component {
   static navigationOptions = {
     title: 'Login',
     headerStyle:{
-      backgroundColor:'blue',
+      backgroundColor:'black',
       borderBottomColor: "black",
       borderBottomWidth:2
     },

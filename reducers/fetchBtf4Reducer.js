@@ -1,29 +1,28 @@
-import { LOGIN_ATTEMPT,LOGIN_SUCCESS,LOGIN_FAIL } from "../actions/types";
-import AsyncStorage from '@react-native-community/async-storage';
+import { FETCH_ATTEMPT,FETCH_SUCCESS,FETCH_FAIL } from "../actions/types";
 
 const initialState={
-    loggedIn:AsyncStorage.getItem("token")?true:false,
     error:false,
+    data:[],
     attempt:false,
     message:''
 }
 export default function(state = initialState, action){
     switch(action.type) {
-        case LOGIN_ATTEMPT:
+        case FETCH_ATTEMPT:
             return {
                 ...state,
                 attempt:true,
                 error:false,
                 message:''
             }
-        case LOGIN_SUCCESS:
+        case FETCH_SUCCESS:
             return {
                 ...state,
                 attempt:false,
                 error:false,
-                loggedIn:true
+                data:action.payload
             }
-        case LOGIN_FAIL:
+        case FETCH_FAIL:
             return {
                 ...state,
                 attempt:false,
